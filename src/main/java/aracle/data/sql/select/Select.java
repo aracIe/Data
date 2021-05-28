@@ -11,11 +11,10 @@ public class Select {
     public static String[] account(String uuid) {
         String feedback = null;
         String[] accountData = null;
-        String statement;
+        String statement = "SELECT name,ip,account FROM data_accounts WHERE uuid = '%s'";
         String name = null;
         String ip = null;
         String account = null;
-        statement = "SELECT name,ip,account FROM data_accounts WHERE uuid = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, uuid))) {
             resultSet.next();
             name = resultSet.getString("name");
@@ -40,7 +39,7 @@ public class Select {
     public static String[] player(String uuid) {
         String feedback = null;
         String[] playerData = null;
-        String statement;
+        String statement = "SELECT level,coins,fraction,health,arcana,endurance,shards FROM data_players WHERE uuid = '%s'";
         int level = 0;
         int coins = 0;
         String fraction = null;
@@ -48,7 +47,6 @@ public class Select {
         int arcana = 0;
         int endurance = 0;
         int shards = 0;
-        statement = "SELECT level,coins,fraction,health,arcana,endurance,shards FROM data_players WHERE uuid = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, uuid))) {
             resultSet.next();
             level = resultSet.getInt("level");
@@ -81,7 +79,7 @@ public class Select {
     public static String[] weapon(String id) {
         String feedback = null;
         String[] weaponData = null;
-        String statement;
+        String statement = "SELECT name,description,fraction,rarity,type,subtype,essence,damage,speed,minPower,maxPower,minLevel,maxLevel FROM data_weapons WHERE uuid = '%s'";
         String name = null;
         String description = null;
         String fraction = null;
@@ -95,7 +93,6 @@ public class Select {
         int maxPower = 0;
         int minLevel = 0;
         int maxLevel = 0;
-        statement = "SELECT name,description,fraction,rarity,type,subtype,essence,damage,speed,minPower,maxPower,minLevel,maxLevel FROM data_weapons WHERE uuid = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, id))) {
             resultSet.next();
             name = resultSet.getString("name");
@@ -140,7 +137,7 @@ public class Select {
     public static String[] armor(String id) {
         String feedback = null;
         String[] weaponData = null;
-        String statement;
+        String statement = "SELECT name,description,fraction,rarity,type,subtype,essence,defence,minPower,maxPower,minLevel,maxLevel FROM data_armor WHERE id = '%s'";
         String name = null;
         String description = null;
         String fraction = null;
@@ -153,7 +150,6 @@ public class Select {
         int maxPower = 0;
         int minLevel = 0;
         int maxLevel = 0;
-        statement = "SELECT name,description,fraction,rarity,type,subtype,essence,defence,minPower,maxPower,minLevel,maxLevel FROM data_armor WHERE id = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, id))) {
             resultSet.next();
             name = resultSet.getString("name");
@@ -196,7 +192,7 @@ public class Select {
     public static String[] runes(String id) {
         String feedback = null;
         String[] weaponData = null;
-        String statement;
+        String statement = "SELECT name,description,fraction,rarity,type,subtype,essence,damage,speed,defence,health,arcana,endurance FROM data_runes WHERE id = '%s'";
         String name = null;
         String description = null;
         String fraction = null;
@@ -210,7 +206,6 @@ public class Select {
         int health = 0;
         int arcana = 0;
         int endurance = 0;
-        statement = "SELECT name,description,fraction,rarity,type,subtype,essence,damage,speed,defence,health,arcana,endurance FROM data_runes WHERE id = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, id))) {
             resultSet.next();
             name = resultSet.getString("name");
@@ -255,11 +250,10 @@ public class Select {
     public static String[] inventories(String iid) {
         String feedback = null;
         String[] inventoryData = null;
-        String statement;
+        String statement = "SELECT id,power,level FROM data_inventories WHERE iid = '%s'";
         String id = null;
         int power = 0;
         int level = 0;
-        statement = "SELECT id,power,level FROM data_inventories WHERE iid = '%s'";
         try (ResultSet resultSet = Core.mySQL.query(String.format(statement, iid))) {
             resultSet.next();
             id = resultSet.getString("id");
